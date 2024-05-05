@@ -11,26 +11,26 @@ class BatchOrder(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long,
-    val reference: String,
-    val harness: String,
-    val revision: String = "",
-    val quantity: Int = 1,
-    val customer: String,
-    val workSite: String,
-    val deliverySite: String,
-    val deliveryLocation: String,
-    val releaseLocation: String,
-    val specialCode: String="",
-    val plDone: LocalDateTime,
-    val releaseDueDate: LocalDate,
-    val releasedDateTime: LocalDateTime,
-    val dispatchedDateTime: LocalDateTime,
-    val createdDateTime: LocalDateTime = LocalDateTime.now(),
-    val modifiedDateTime: LocalDateTime = LocalDateTime.now(),
-    val createdBy: String,
-    val modifiedBy: String,
+    var reference: String,
+    var harness: String,
+    var revision: String = "",
+    var quantity: Int = 1,
+    var customer: String,
+    var workSite: String,
+    var deliverySite: String,
+    var deliveryLocation: String,
+    var releaseLocation: String,
+    var specialCode: String="",
+    var plDone: LocalDateTime,
+    var releaseDueDate: LocalDate,
+    var releasedDateTime: LocalDateTime,
+    var dispatchedDateTime: LocalDateTime,
+    var createdDateTime: LocalDateTime = LocalDateTime.now(),
+    var modifiedDateTime: LocalDateTime = LocalDateTime.now(),
+    var createdBy: String,
+    var modifiedBy: String,
     @ManyToOne
     @JoinColumn(name = "plan_id", referencedColumnName = "id")
-    val workPlan: WorkPlan?
+    var workPlan: WorkPlan?
 ) {
 }
