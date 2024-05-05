@@ -1,0 +1,7 @@
+<div>
+    <h2>This is the GreetingViewComponent</h2>
+    <!--/*@thymesVar id="greetingView" type="au.com.amesystems.kotlinspringhtmxviewcomponentstarter.web.greeting.GreetingViewComponent.GreetingView"*/-->
+    <div th:text="${greetingView.message}"></div>
+    <div th:text="${ 'Likes: ' + greetingView.likes}"></div>
+    <button view:action="incrementLikes">Press Like</button>
+</div>

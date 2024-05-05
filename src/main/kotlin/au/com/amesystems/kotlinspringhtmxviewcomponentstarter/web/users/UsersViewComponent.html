@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Users | Thymes Optimizer</title>
+    <script src="http://localhost:35729/livereload.js"></script>
+    <script defer src="/webjars/htmx.org/dist/htmx.min.js"></script>
+</head>
+<body>
+    <h2>Users</h2>
+    <!--/*@thymesVar id="usersView" type="au.com.amesystems.kotlinspringhtmxviewcomponentstarter.web.users.UsersViewComponent.UsersView"*/-->
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+
+        <tr th:each="user : ${usersView.users}">
+            <td th:text="${user.id}"></td>
+            <th th:text="${user.username}"></th>
+            <th th:text="${user.email}"></th>
+            <th><input type="checkbox" th:checked="${user.isActive()}"></th>
+            <th>
+                <button th:view:action="|editUser?id=${user.id}|">Edit</button>
+                <button th:view:action="|deleteUser?id=${user.id}|">Delete</button>
+            </th>
+        </tr>
+    </table>
+
+    <h2>User Form</h2>
+    <form th:object="${usersView.user}">
+        <div>
+            <label>Username <input type="text" id="username" name="username" th:value="${usersView.user.username}"></label>
+        </div>
+        <div>
+            <label>Email <input type="text" id="email" name="email" th:value="${usersView.user.email}"></label>
+        </div>
+        <div>
+            <label>Password <input type="password" id="password" name="password" th:value="${usersView.user.password}"></label>
+        </div>
+        <div>
+            <button type="submit" view:action="saveUser">Save</button>
+        </div>
+    </form>
+    <div>
+        <div th:each="error : ${usersView.errors}">
+            <h5 th:text="${error}"></h5>
+        </div>
+    </div>
+</body>
+</html>
